@@ -20,17 +20,17 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @ControllerAdvice
-public class DetailController {
+public class ListStoresController {
       @Autowired
     private StoresService storesService;
     @Autowired
     private FoodsService foodsService;
 
-    @GetMapping("/detail")
-    public String detail(Model model, @RequestParam Map<String, String> params) {
+    @GetMapping("/liststores")
+    public String listStores(Model model, @RequestParam Map<String, String> params) {
         model.addAttribute("stores", this.storesService.getStores(params));
                 model.addAttribute("foods", this.foodsService.getFoods(params));
 
-        return "detail";
+        return "liststores";
     }
 }

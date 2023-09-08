@@ -14,7 +14,7 @@
         <div class="dropdown">
             <ul >
                 <li><a href="<c:url value="/"/>">Trang Chủ</a></li>
-                <li><a href="<c:url value="/detail"/>">Cửa Hàng</a></li>
+                <li><a href="<c:url value="/liststores"/>">Cửa Hàng</a></li>
                 <li><a href="<c:url value="/store_admin/stores"/>">Quản lý cửa hàng</a></li>
                 <li><a href="<c:url value ="/store_admin/foods"/>">Quản lý thực phẩm</a></li>
                 <li><a href="<c:url value="/listfood"/>">Món ăn</a></li>

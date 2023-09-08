@@ -57,7 +57,6 @@ public class Menus implements Serializable {
     @Column(name = "description")
     private String description;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "publish_date")
     @Temporal(TemporalType.DATE)
     private Date publishDate;

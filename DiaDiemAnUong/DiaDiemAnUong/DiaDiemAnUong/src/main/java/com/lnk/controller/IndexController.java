@@ -46,7 +46,7 @@ public class IndexController {
       @GetMapping("/stores/{storeId}")
     public String storesDetails(Model model, @PathVariable(value = "storeId") int id) {
         model.addAttribute("stores", this.storesService.getStoresById(id));
-        return "detail";
+        return "liststores";
     }
     
 }

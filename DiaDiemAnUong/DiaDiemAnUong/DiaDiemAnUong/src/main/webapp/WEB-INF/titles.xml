@@ -38,14 +38,15 @@
         <put-attribute name="content"
                        value="/WEB-INF/pages/foods.jsp" />
     </definition>
-    <definition name="detail" extends="baseLayout">
+    <definition name="liststores" extends="baseLayout">
         <put-attribute name="title" value="Chi tiết cửa hàng" />
         <put-attribute name="content"
-                       value="/WEB-INF/pages/detail.jsp" />
+                       value="/WEB-INF/pages/liststores.jsp" />
     </definition>
     <definition name="listfood" extends="baseLayout">
         <put-attribute name="title" value="Danh sách đồ ăn" />
         <put-attribute name="content"
                        value="/WEB-INF/pages/listfood.jsp" />
     </definition>
+    
 </tiles-definitions>
