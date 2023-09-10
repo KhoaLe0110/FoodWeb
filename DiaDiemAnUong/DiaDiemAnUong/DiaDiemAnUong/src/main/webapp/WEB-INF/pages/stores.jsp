@@ -32,7 +32,7 @@
         <form:input type="file" class="form-control" 
                     path="file" id="file" multiple="multiple" placeholder="Ảnh cửa hàng..." />
         <label for="file">Ảnh cửa hàng</label>
-         <c:if test="${stores.imgfoodstore != null}">
+        <c:if test="${stores.imgfoodstore != null}">
             <img src="${stores.imgfoodstore}" width="120" />
         </c:if>
     </div>

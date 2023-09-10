@@ -46,21 +46,6 @@ public class Users implements Serializable {
 
     public static final String STORE = "ROLE_STORE";
     public static final String USER = "ROLE_USER";
-
-    /**
-     * @return the confirmPassword
-     */
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    /**
-     * @param confirmPassword the confirmPassword to set
-     */
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,7 +63,6 @@ public class Users implements Serializable {
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "role")
     private String role;
@@ -118,9 +102,9 @@ public class Users implements Serializable {
     @OneToMany(mappedBy = "userId")
     private Set<Orders> ordersSet;
     @Transient
-    private String confirmPassword;
-    @Transient
     private MultipartFile file;
+    @Transient
+    private String confirmPassword;
 
     public Users() {
     }
@@ -294,4 +278,19 @@ public class Users implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
+
+    /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
 }

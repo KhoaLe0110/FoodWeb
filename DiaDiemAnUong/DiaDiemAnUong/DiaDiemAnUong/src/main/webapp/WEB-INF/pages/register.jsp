@@ -49,6 +49,10 @@
         <form:input type="password" class="form-control" id="confirm-password" path="confirmPassword"/>
     </div>
     <div class="mb-3">
+        <label for="role" class="form-label">set role :(ROLE_STORE;ROLE_USER):</label>
+        <form:input type="text" class="form-control" id="role" path="role"/>
+    </div>
+    <div class="mb-3">
         <label for="Phone" class="form-label">Phone</label>
         <form:input type="phone" class="form-control" id="phone" path="phone"/>
     </div>

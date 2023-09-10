@@ -34,29 +34,15 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "stores")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Stores.findAll", query = "SELECT t FROM Stores t"),
-    @NamedQuery(name = "Stores.findByStoreId", query = "SELECT t FROM Stores t WHERE t.storeId = :storeId"),
-    @NamedQuery(name = "Stores.findByName", query = "SELECT t FROM Stores t WHERE t.name = :name"),
-    @NamedQuery(name = "Stores.findByImgfoodstore", query = "SELECT t FROM Stores t WHERE t.imgfoodstore = :imgfoodstore"),
-    @NamedQuery(name = "Stores.findByLocation", query = "SELECT t FROM Stores t WHERE t.location = :location"),
-    @NamedQuery(name = "Stores.findByLatitude", query = "SELECT t FROM Stores t WHERE t.latitude = :latitude"),
-    @NamedQuery(name = "Stores.findByLongitude", query = "SELECT t FROM Stores t WHERE t.longitude = :longitude")})
+    @NamedQuery(name = "Stores.findAll", query = "SELECT s FROM Stores s"),
+    @NamedQuery(name = "Stores.findByStoreId", query = "SELECT s FROM Stores s WHERE s.storeId = :storeId"),
+    @NamedQuery(name = "Stores.findByName", query = "SELECT s FROM Stores s WHERE s.name = :name"),
+    @NamedQuery(name = "Stores.findByImgfoodstore", query = "SELECT s FROM Stores s WHERE s.imgfoodstore = :imgfoodstore"),
+    @NamedQuery(name = "Stores.findByLocation", query = "SELECT s FROM Stores s WHERE s.location = :location"),
+    @NamedQuery(name = "Stores.findByLatitude", query = "SELECT s FROM Stores s WHERE s.latitude = :latitude"),
+    @NamedQuery(name = "Stores.findByLongitude", query = "SELECT s FROM Stores s WHERE s.longitude = :longitude"),
+    @NamedQuery(name = "Stores.findByDetailStore", query = "SELECT s FROM Stores s WHERE s.detailStore = :detailStore")})
 public class Stores implements Serializable {
-   
-
-    /**
-     * @return the file
-     */
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    /**
-     * @param file the file to set
-     */
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -65,11 +51,13 @@ public class Stores implements Serializable {
     @Column(name = "store_id")
     private Integer storeId;
     @Basic(optional = false)
-    @NotNull(message = "{stores.name.notNull}")
-    @Size(min = 1, max = 100, message = "{stores.name.lenErr}")
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "name")
     private String name;
-    //@Size(max = 255)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
     @Column(name = "imgfoodstore")
     private String imgfoodstore;
     @Size(max = 200)
@@ -80,6 +68,11 @@ public class Stores implements Serializable {
     private BigDecimal latitude;
     @Column(name = "longitude")
     private BigDecimal longitude;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "detail_store")
+    private String detailStore;
     @OneToMany(mappedBy = "storeId")
     private Set<Foods> foodsSet;
     @OneToMany(mappedBy = "storeId")
@@ -95,9 +88,9 @@ public class Stores implements Serializable {
     private Set<Orders> ordersSet;
     @OneToMany(mappedBy = "storeId")
     private Set<Menus> menusSet;
-    
     @Transient
     private MultipartFile file;
+
 
     public Stores() {
     }
@@ -106,9 +99,11 @@ public class Stores implements Serializable {
         this.storeId = storeId;
     }
 
-    public Stores(Integer storeId, String name) {
+    public Stores(Integer storeId, String name, String imgfoodstore, String detailStore) {
         this.storeId = storeId;
         this.name = name;
+        this.imgfoodstore = imgfoodstore;
+        this.detailStore = detailStore;
     }
 
     public Integer getStoreId() {
@@ -157,6 +152,14 @@ public class Stores implements Serializable {
 
     public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
+    }
+
+    public String getDetailStore() {
+        return detailStore;
+    }
+
+    public void setDetailStore(String detailStore) {
+        this.detailStore = detailStore;
     }
 
     @XmlTransient
@@ -244,6 +247,20 @@ public class Stores implements Serializable {
     @Override
     public String toString() {
         return "com.lnk.pojo.Stores[ storeId=" + storeId + " ]";
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
     
 }

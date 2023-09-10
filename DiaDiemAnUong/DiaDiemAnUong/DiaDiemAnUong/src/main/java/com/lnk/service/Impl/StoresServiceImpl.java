@@ -60,4 +60,9 @@ public class StoresServiceImpl implements StoresService {
         return this.storesRepo.deleteStores(id);
     }
 
+    @Override
+    public int countStores() {
+        return this.storesRepo.countStores();
+    }
+
 }

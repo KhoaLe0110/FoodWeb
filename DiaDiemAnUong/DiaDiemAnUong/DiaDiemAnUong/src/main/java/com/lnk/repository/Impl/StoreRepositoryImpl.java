@@ -45,14 +45,14 @@ public class StoreRepositoryImpl implements StoreRepository {
         Root root = q.from(Stores.class);
         q.select(root);
 
-//        if (params != null) {
-//            List<Predicate> predicates = new ArrayList<>();
-//            String kw = params.get("kw");
-//            if (kw != null && !kw.isEmpty()) {
-//                predicates.add(b.like(root.get("name"), String.format("%%%s%%", kw)));
-//            }
-//            q.where(predicates.toArray(Predicate[]::new));
-//        }
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+            String kw = params.get("kw");
+            if (kw != null && !kw.isEmpty()) {
+                predicates.add(b.like(root.get("name"), String.format("%%%s%%", kw)));
+            }
+            q.where(predicates.toArray(Predicate[]::new));
+        }
 
         q.orderBy(b.desc(root.get("storeId")));
         Query query = session.createQuery(q);
@@ -99,6 +99,13 @@ public class StoreRepositoryImpl implements StoreRepository {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public int countStores() {
+        Session s= this.sessionFactory.getObject().getCurrentSession();
+        Query q= s.createQuery("SELECT Count(*) FROM Stores");
+        return Integer.parseInt(q.getSingleResult().toString());
     }
 
 }

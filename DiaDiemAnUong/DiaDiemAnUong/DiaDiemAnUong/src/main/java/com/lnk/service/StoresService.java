@@ -16,6 +16,8 @@ public interface StoresService {
 
     List<Stores> getStores(Map<String, String> params);
 
+    int countStores();
+
     boolean addOrUpdateStores(Stores t);
 
     Stores getStoresById(int id);

@@ -16,7 +16,7 @@ public interface FoodsService {
 
     List<Foods> getFoods(Map<String, String> params);
     
-    Long countFoods();
+    int countFoods();
 
     boolean addOrUpdateFoods(Foods f);
 

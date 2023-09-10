@@ -25,6 +25,11 @@
                     placeholder="Nhập giá..." />
         <label for="price">Giá</label>
     </div>
+<!--         <div class="form-floating mb-3 mt-3">
+        <form:input type="text" class="form-control" path="storeId" id="storeId"
+                    placeholder="Nhập mã cửa hàng..." />
+        <label for="price">Mã cửa hàng</label>
+    </div>-->
     <div class="form-floating mb-3 mt-3">
         <form:input type="text" class="form-control" path="foodType" id="foodType"
                     placeholder="Nhập loại thực phẩm..." />

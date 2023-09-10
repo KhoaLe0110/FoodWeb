@@ -48,6 +48,20 @@ public class FoodsRepositoryImpl implements FoodsRepository {
 
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
+             String kw = params.get("kw");
+            if (kw != null && !kw.isEmpty()) {
+                predicates.add(b.like(root.get("name"), String.format("%%%s%%", kw)));
+            }
+             String fromPrice = params.get("fromPrice");
+            if (fromPrice != null && !fromPrice.isEmpty()) {
+                predicates.add(b.greaterThanOrEqualTo(root.get("price"), Double.parseDouble(fromPrice)));
+            }
+
+            String toPrice = params.get("toPrice");
+            if (toPrice != null && !toPrice.isEmpty()) {
+                predicates.add(b.lessThanOrEqualTo(root.get("price"), Double.parseDouble(toPrice)));
+            }
+
             q.where(predicates.toArray(Predicate[]::new));
         }
 
@@ -71,11 +85,11 @@ public class FoodsRepositoryImpl implements FoodsRepository {
     }
 
     @Override
-    public Long countFoods() {
+    public int countFoods() {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("SELECT Count(*) FROM Foods");
 
-        return Long.parseLong(q.getSingleResult().toString());
+        return Integer.parseInt(q.getSingleResult().toString());
     }
 
     @Override

@@ -43,7 +43,6 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "Foods.findByStatus", query = "SELECT f FROM Foods f WHERE f.status = :status")})
 public class Foods implements Serializable {
 
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +56,7 @@ public class Foods implements Serializable {
     private String name;
     @Basic(optional = false)
     @NotNull
-   // @Size(min = 1, max = 255)
+    @Size(min = 1, max = 255)
     @Column(name = "imgfood")
     private String imgfood;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -70,7 +69,7 @@ public class Foods implements Serializable {
     private String foodType;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 12)
+    @Size(min = 1, max = 50)
     @Column(name = "status")
     private String status;
     @JoinColumn(name = "menu_id", referencedColumnName = "menu_id")
@@ -84,7 +83,7 @@ public class Foods implements Serializable {
     @OneToMany(mappedBy = "foodId")
     private Set<Orders> ordersSet;
     @Transient
-     private MultipartFile file;
+    private MultipartFile file;
 
     public Foods() {
     }
@@ -207,6 +206,7 @@ public class Foods implements Serializable {
     public String toString() {
         return "com.lnk.pojo.Foods[ foodId=" + foodId + " ]";
     }
+
     /**
      * @return the file
      */

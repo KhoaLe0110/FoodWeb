@@ -7,15 +7,13 @@ package com.lnk.controller;
 import com.lnk.pojo.Stores;
 import com.lnk.service.StoresService;
 import com.lnk.service.FoodsService;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import static org.hibernate.criterion.Expression.sql;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @ControllerAdvice
+@PropertySource("classpath:configs.properties")
 public class IndexController {
 
     @Autowired
@@ -39,7 +38,9 @@ public class IndexController {
         model.addAttribute("stores", this.storesService.getStores(params));
 //        model.addAttribute("dsfood", this.machService.getFoods(params));
      
-       
+       int pageSize=Integer.parseInt( this.env.getProperty("PAGE_SIZE"));
+       int count =this.storesService.countStores();
+       model.addAttribute("counter",Math.ceil(count*1.0/pageSize));
 
         return "index"; // Thư mục "WEB-INF/views/" chứa các trang view (ví dụ: index.jsp)
     }

@@ -56,7 +56,6 @@ public class Menus implements Serializable {
     @Size(max = 65535)
     @Column(name = "description")
     private String description;
-    @Basic(optional = false)
     @Column(name = "publish_date")
     @Temporal(TemporalType.DATE)
     private Date publishDate;
@@ -73,10 +72,9 @@ public class Menus implements Serializable {
         this.menuId = menuId;
     }
 
-    public Menus(Integer menuId, String name, Date publishDate) {
+    public Menus(Integer menuId, String name) {
         this.menuId = menuId;
         this.name = name;
-        this.publishDate = publishDate;
     }
 
     public Integer getMenuId() {

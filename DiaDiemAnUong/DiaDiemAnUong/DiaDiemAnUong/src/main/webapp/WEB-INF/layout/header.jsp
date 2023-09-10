@@ -15,9 +15,9 @@
             <ul >
                 <li><a href="<c:url value="/"/>">Trang Chủ</a></li>
                 <li><a href="<c:url value="/liststores"/>">Cửa Hàng</a></li>
-                <li><a href="<c:url value="/store_admin/stores"/>">Quản lý cửa hàng</a></li>
-                <li><a href="<c:url value ="/store_admin/foods"/>">Quản lý thực phẩm</a></li>
                 <li><a href="<c:url value="/listfood"/>">Món ăn</a></li>
+                <li><a href="#">Giỏ Hàng</a></li>
+                <li><a href="#">Bình Luân</a></li>
                 <div class="login">
                     <c:choose>
                         <c:when test="${pageContext.request.userPrincipal.name != null}">
@@ -34,18 +34,23 @@
                             </li>
                         </c:otherwise>
                     </c:choose>
-
+                        <c:forEach items="${users}" var="u">
+                    <div class="text-center" >
+                        <img src="${u.avatar}" class="rounded" alt="avatar">
+                    </div>
+                        </c:forEach>
                 </div>
 
 
             </ul>
         </div>
-
+        <c:url value="/" var="action" />
         <div class="search-bar">
-            <input type="text" placeholder="Tìm cửa hàng hoặc món ăn">
+        <form class="search-bar" action="${action}">
+            <input type="text" name ="kw" placeholder="Tìm cửa hàng hoặc món ăn...">
             <button type="submit">Search</button>
+        </form>
         </div>
-
         <div class="header__img">
             <img src="" alt="">
         </div>

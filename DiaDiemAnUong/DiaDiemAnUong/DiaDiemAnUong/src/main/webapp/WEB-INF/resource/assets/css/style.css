@@ -6,6 +6,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Aug 21, 2023, 3:36:07 PM
     Author     : Jackie's PC
 */
+.button-c{
+    float:right;
+}
+.page-c{
+    float:left;
+}
 .food-list h3{
     font: Arial;
     font-size: 20px;

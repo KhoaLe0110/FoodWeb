@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public interface StoreRepository {
     List<Stores> getStores(Map<String, String> params);
+    int countStores();
     boolean addOrUpdateStores(Stores t);
     Stores getStoresById(int id);
     boolean deleteStores(int id);
