@@ -25,7 +25,12 @@
                     <div class="card-body">
                         <h5 class="card-title">${st.name}</h5>
                         <p class="card-text">${st.location}</p>
+                        <c:forEach items="${foods}" var="f">
+                            <c:if test="${st.storeId ==f.storeId.storeId}">
+                                <li>${f.name} - ${f.price}</li>
+                                </c:if>
 
+                        </c:forEach>
                     </div>
                 </div>
             </div>

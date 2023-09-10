@@ -53,7 +53,7 @@
                     <td>${f.price} VND</td>
                     <td>${f.status}</td>
                     <td>
-                        <a href="<c:url value='/mua' />">
+                        <a href="<c:url value='/buy' />">
                             <button>Mua</button>
                         </a>
                     </td>

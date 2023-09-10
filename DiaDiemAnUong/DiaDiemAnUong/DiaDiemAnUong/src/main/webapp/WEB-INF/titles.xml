@@ -48,5 +48,10 @@
         <put-attribute name="content"
                        value="/WEB-INF/pages/listfood.jsp" />
     </definition>
+    <definition name="buy" extends="baseLayout">
+        <put-attribute name="title" value="Danh sách đồ ăn" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/buy.jsp" />
+    </definition>
     
 </tiles-definitions>

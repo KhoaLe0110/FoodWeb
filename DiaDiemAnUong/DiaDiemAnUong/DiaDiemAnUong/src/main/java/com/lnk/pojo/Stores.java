@@ -65,11 +65,10 @@ public class Stores implements Serializable {
     private String location;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "latitude")
-    private BigDecimal latitude;
+    private String latitude;
     @Column(name = "longitude")
-    private BigDecimal longitude;
+    private String longitude;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "detail_store")
     private String detailStore;
@@ -138,19 +137,19 @@ public class Stores implements Serializable {
         this.location = location;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

@@ -34,22 +34,18 @@
                             </li>
                         </c:otherwise>
                     </c:choose>
-                        <c:forEach items="${users}" var="u">
-                    <div class="text-center" >
-                        <img src="${u.avatar}" class="rounded" alt="avatar">
-                    </div>
-                        </c:forEach>
+
                 </div>
-
-
             </ul>
         </div>
+       
         <c:url value="/" var="action" />
+       
         <div class="search-bar">
-        <form class="search-bar" action="${action}">
-            <input type="text" name ="kw" placeholder="Tìm cửa hàng hoặc món ăn...">
-            <button type="submit">Search</button>
-        </form>
+            <form class="search-bar" action="${action}">
+                <input type="text" name ="kw" placeholder="Tìm cửa hàng hoặc món ăn...">
+                <button type="submit">Search</button>
+            </form>
         </div>
         <div class="header__img">
             <img src="" alt="">

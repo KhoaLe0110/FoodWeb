@@ -52,15 +52,16 @@ public class FoodsRepositoryImpl implements FoodsRepository {
             if (kw != null && !kw.isEmpty()) {
                 predicates.add(b.like(root.get("name"), String.format("%%%s%%", kw)));
             }
-             String fromPrice = params.get("fromPrice");
-            if (fromPrice != null && !fromPrice.isEmpty()) {
-                predicates.add(b.greaterThanOrEqualTo(root.get("price"), Double.parseDouble(fromPrice)));
-            }
-
-            String toPrice = params.get("toPrice");
-            if (toPrice != null && !toPrice.isEmpty()) {
-                predicates.add(b.lessThanOrEqualTo(root.get("price"), Double.parseDouble(toPrice)));
-            }
+//             String fromPrice = params.get("fromPrice");
+//            if (fromPrice != null && !fromPrice.isEmpty()) {
+//                predicates.add(b.greaterThanOrEqualTo(root.get("price"), Double.parseDouble(fromPrice)));
+//               
+//            }
+//
+//            String toPrice = params.get("toPrice");
+//            if (toPrice != null && !toPrice.isEmpty()) {
+//                predicates.add(b.lessThanOrEqualTo(root.get("price"), Double.parseDouble(toPrice)));
+//            }
 
             q.where(predicates.toArray(Predicate[]::new));
         }
